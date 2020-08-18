@@ -1,0 +1,38 @@
+{%extends "base.html"%}
+{%block title%}
+Log in
+{%endblock%}
+
+{%block body%}
+  {% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    {% for category, message in messages %}
+    <div class="alert alert-{{category}}" role="alert">
+      {{message}}
+      </div>
+    {% endfor %}
+  {% endif %}
+  {% endwith %}
+<form method="POST" action={{url_for("login")}}>
+    <div class="form-group">
+       <label for="username">Username</label>
+      <label class="sr-only" for="username">Username</label>
+      <div class="input-group mb-2">
+        <div class="input-group-prepend">
+          <div class="input-group-text">@</div>
+        </div>
+        <input type="text" class="form-control" id="username" aria-describedby=Userhelp name="username" placeholder="Username">
+      </div>
+    <small id="Userhelp" class="form-text text-muted">We do not share your credentials</small>
+  </div>
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+  </div>
+  <button type="submit" class="btn btn-primary" onclick= "window.open={{url_for("homepage")}}">Submit</button>
+</form>
+
+<b><p>Haven't signed up, <a href={{url_for("register")}} style="decoration: none">Sign up here</a> </p></b>
+
+
+{%endblock%}

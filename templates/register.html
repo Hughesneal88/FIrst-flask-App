@@ -1,0 +1,60 @@
+{%extends "base.html"%}
+{%block title%}
+Sign Up
+{%endblock%}
+
+{%block body%}
+  {% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    {% for category, message in messages %}
+    <div class="alert alert-{{category}}" role="alert">
+      {{message}}
+      </div>
+    {% endfor %}
+  {% endif %}
+  {% endwith %}
+<form method="POST", action={{url_for("register")}}>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Email</label>
+      <input type="email" class="form-control" id="inputEmail4" placeholder="Email" name="email_address">
+    </div>
+     <div class="form-group">
+       <label for="username">Username</label>
+      <label class="sr-only" for="username">Username</label>
+      <div class="input-group mb-2">
+        <div class="input-group-prepend">
+          <div class="input-group-text">@</div>
+        </div>
+        <input type="text" class="form-control" id="username" name="username" placeholder="Username">
+      </div>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="Phone">Phone Number</label>
+      <input type="tel" class="form-control" id="Phone" placeholder="Phone Number" name="Phone_number">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputPassword4">Password</label>
+      <input type="password" class="form-control" id="inputPassword4" name="user_pass"placeholder="Password">
+      <small id="passwordHelpInline" class="text-muted">
+      Must be 8-20 characters long.
+      </small>
+    </div>
+  </div>
+  <div class="form-group">
+      <label for="inputPassword4">Confirm Password</label>
+      <input type="password" class="form-control" id="inputPassword4" name="conf_pass" placeholder="Password">
+    </div>
+  </div>
+  <div class="form-group col-md-6">
+    <div class="form-group col-md-6">
+       <button type="submit" class="btn btn-outline-primary" name="submit">Submit</button>
+  </div>
+  <div class="form-group col-md-6">
+     <button type="button" class="btn btn-outline-danger" name="cancel">Cancel</button>
+    </div>
+  </div>
+</form>
+
+
+{%endblock%}

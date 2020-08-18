@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title%}
+    Send your styles
+{% endblock %}
+{% block body %}
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+  {% for category, message in messages %}
+  <div class="alert alert-{{category}}" role="alert">
+      <li class="{{ category }}">{{ message }}</li>
+  </div>
+  {% endfor %}
+{% endif %}
+{% endwith %}
+<Form action={{url_for("upload_file")}} enctype="multipart/form-data" method="POST">
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" id="name" placeholder="Name" name="name">
+    </div>
+      <div class="form-group col-md-6">
+        <label for="num">Whatsapp Number</label>
+        <input type="tel" class="form-control" id="num" placeholder="Whatsapp Phone number" name="number">
+      </div>
+  <div class = "form-row">
+    <div class="custom-file">
+    <input type="file" class="custom-file-input" id="File" name="File">
+    <label class="custom-file-label" for="File">Choose file</label>
+    <div class="form row"></div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </div>
+  </div>
+  </div>
+</Form>
+{% endblock %}

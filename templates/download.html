@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}
+Admin download page
+{% endblock %}
+
+{% block body %}
+	<div class="form-group">
+    	<label for="name">Password</label>
+    	<input type="text" class="form-control" id="name" name="Name" placeholder="Customer's Name">
+  	</div>
+  	{% if files != None}
+  		<div>
+	  		{% for file in files%}
+	  		<td>
+  				<a href={files}.zip>{file}</a>
+  			</td>
+  			{% enfor %}
+		</div>
+  	{% endif %}
+{% endblock %}
